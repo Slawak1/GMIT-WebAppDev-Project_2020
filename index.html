@@ -23,7 +23,7 @@
 		  <li><a class="active" href="#home">Home</a></li>
 		  <li><a href="#news">News</a></li>
 		  <li><a href="#login">Login</a></li>
-		  <li><a href="#regster">Register</a></li>
+		  <li><a id = "registration" href="#regster" onclick = "myReg();">Register</a></li>
 		</ul>
 
 	</div>
@@ -34,8 +34,8 @@
     <p>Left Side</p>
   </div>
 
-  <div class="right-box">
-    <p>Right Side</p>
+  <div id="right-box">
+    <p id = "par">Right Side</p>
   </div>
 
   <footer>
@@ -47,5 +47,10 @@
 
 
 </body>
+<script>
+	function myReg() {
+		document.getElementById("par").innerHTML='<object type="text/html" data="register.html" ></object>'; 
+}
+</script>
 
 </html>
