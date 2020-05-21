@@ -8,6 +8,7 @@
 	<!-- Load style.css here-->
 	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script type="text/javascript" src="JS/scripts.js"></script>
 
 </head>
 <body>
@@ -23,6 +24,8 @@
 		  <li><a class="active" href="#home">Home</a></li>
 		  <li><a href="#news">News</a></li>
 		  <li><a href="#login">Login</a></li>
+		  
+		  <!-- When register button pressed JavaScript myReg() function is called  -->
 		  <li><a id = "registration" href="#regster" onclick = "myReg();">Register</a></li>
 		</ul>
 
@@ -35,7 +38,10 @@
   </div>
 
   <div id="right-box">
-    <p id = "par">Right Side</p>
+    
+	
+	
+	
   </div>
 
   <footer>
@@ -47,10 +53,6 @@
 
 
 </body>
-<script>
-	function myReg() {
-		document.getElementById("par").innerHTML='<object type="text/html" data="register.html" ></object>'; 
-}
-</script>
+
 
 </html>

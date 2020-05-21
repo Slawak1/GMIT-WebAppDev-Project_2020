@@ -47,10 +47,16 @@ header {
   
 }
 
+#register-form {
+	width:500px;
+	height:500px;
+}
+
 .right-box p {
   color: #ffffff;
   padding-left: 110px;
   padding-top: 50px;
+  
 }
 
 /* Footer */
