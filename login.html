@@ -1,3 +1,4 @@
+
 <!doctype html>
 <!-- working with style.css here-->
 <html lang="en">
@@ -7,67 +8,67 @@
 	<title>Welcome</title>
 	<!-- Load style.css here-->
 	<link type="text/css" rel="stylesheet" href="css/style.css"/>
-	<link type="text/css" rel="stylesheet" href="css/login.css"/>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
-	<script type="text/javascript" src="JS/scripts.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
 
 </head>
 <body>
-
-<div class="container">
-<!-- Header -->	
-  <header>
-    <!-- Logo -->
-    <div class="logo">Logo</div>
-	<!-- Menu -->
-    <div class="menu">
-	<!-- generate menu as a list -->	
-		<ul>
-		  <li><a class="active" href="index.html">Home</a></li>
-		  <li><a href="#about">About Us</a></li>
-		  <li><a href="login.html">Login</a></li>
-		</ul>
-
-	</div>
-  </header>
-	
-	<!-- Left Menu -->
+<div class="container">  
+	<!-- Header -->	
+	  <header>
+		<!-- Logo -->
+		<div class="logo">Logo</div>
+		<!-- Menu -->
+		<div class="menu">
+			<ul>
+			  <li><a class="active" href="index.html">Home</a></li>
+			  <li><a href="#about">About Us</a></li>
+			  <li><a href="login.html">Login</a></li>
+			  
+			</ul>
+		
+		</div>
+	  </header>
 	<div class="left-box">
 		<p>Left Side</p>
+		<a href="main.html"> Link</a>
 	</div>
-	
-	<!-- Right side of the page -->
 	<div id="right-box">
-			<h1>Login</h1>
+		 
+          
+          
+          <h1>Login</h1>
 			<p>Please login to access Data.</p>
 		<hr>
+          <form>
+			<label for="user_email"><b>Email</b></label>
 		
-		<form>
-			<label for="email"><b>Email</b></label>
+			<input type="text" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter Email" title="please enter valid email [test@test.com]." required>
 		
-			<input type="text" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter Email" title="please enter valid email [test@test.com]." required>
-		
-			<label for="psw"><b>Password</b></label>
-			<input type="password" id="password" placeholder="Enter Password"  required>
+			<label for="user_password"><b>Password</b></label>
+			<input type="password" id="user_password" placeholder="Enter Password"  required>
 			<span id='message'></span>
 		
 		
 		<hr>
-			<button type="submit" onclick="myLogin()"  class="registerbtn">Login</button>
-		</form>
-		
-
+			<button id="button" type="submit" onclick="login(this.form)"  class="registerbtn">LOGIN</button>
+		</form>  
+        
+		  
 	</div>
-
-<footer>
-    <div>Footer @Slaw</div>
-</footer>
-
+  <div class="footer">
+  </div>  
 </div>
-  
+</body>   
+<script>
+// create a function to action the login button  
 
 
-</body>
 
 
-</html>
+
+
+</script>
+
+
+</html>  
