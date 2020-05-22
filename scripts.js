@@ -36,7 +36,7 @@ function pieChart(val1, val2, val3, val4, val5, val6) {
 					
 					
 	// set pie chart width and height
-	var width = 600, height = 500;
+	var width = 750, height = 750;
 	
 	// set color schema
 	var colors = d3.scaleOrdinal(d3.schemeSet2 );
