@@ -1,17 +1,22 @@
 
-/*  */
+/*
+@Slawomir Sowa
+GMIT WAD
 
-.container {
+*/
+
+/* CSS style for body */
+body {
 	width:100%; 
-	height: 950px;
 	padding: 16px;
 	background-image: url("../img/bckground.PNG");
-	
-	
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+}
+.container {
+	height:950px;
 }
 
 header {
@@ -60,12 +65,15 @@ header {
   
 }
 
-#cont {
+#cont2 {
+	width:100%;
+	height:auto;
 	border-radius:15px;
 	padding: 16px;
 	margin:10px;
 	background-color: rgba(187, 197, 201, 0.6);
 	box-shadow: 5px 10px 15px;
+	opacity:0;
 }
 
 

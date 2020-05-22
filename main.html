@@ -15,42 +15,103 @@
 
 <div class="container">
 <!-- Header -->	
-  <header>
-    <!-- Logo -->
-    <div class="logo">Logo</div>
-	<!-- Menu -->
-    <div class="menu">
-		<ul>
-		  <li><a class="active" href="index.html">Home</a></li>
-		  <li><a href="#about">About Us</a></li>
-		  <li><a href="login.html">Login</a></li>
-		  
-		</ul>
-	
-	</div>
-  </header>
-	
-	
-  <div class="left-box">
-    <p>Left Side</p>
-  </div>
+	  <header>
+		<!-- Menu -->
+			<div class="menu">
+				<ul>
+				  <li><a class="active" href="index.html">Home</a></li>
+				  <li><a href="#about">About Us</a></li>
+				  <li><a href="login.html">Login</a></li>
+				  
+				</ul>
+			
+			</div>
+	  </header>
+<!-------------------- LEFT BOX ----------------------------------------->			
+		
+	  <div id="left-box">
+		<p>Left Side</p>
+		<a href="main.html"> Link</a>
+	  </div>
+<!--------------------- RIGHT BOX ---------------------------------------->
+	  <div id="right-box">
+		<div id="cont2" >
+			<h1> Data</h1>
+			<div id = "chart1"> 
+				<script>
+					var width = 540;
+					var height = 540;
+					var radius = Math.min(width, height) / 2;
+					
+					let svgChart = d3.select("#chart1").append("svg")
+						.attr("width", width)
+						.attr("height", height)
+					.append("group")
+						.attr("transform", `translate(${width / 2}, ${height / 2})`);
+						
+					var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb", "#e78ac3","#a6d854","#ffd92f"]);
+					
+					var chartPie = d3.pie()
+						.value(d=>d.count)
+						.sort(null);
+						
+					var arc = d3.arc()
+						.innerRadius(radius/2)
+						.outerRadius(radius)
+					
+					function type(d) {
+						d.apples = Number(d.apples);
+						d.oranges = Number(d.oranges);
+						return d;
+					}
+					
+					function arcTween(a) {
+						const i = d3.interpolate(this._current, a);
+						this._current = i(1);
+						return (t) => arc(i(t));
+					}
+					
+					d3.json("data.json", type).then(data => {  
+						d3.selectAll("input")
+							.on("change", update);
 
-  <div id="right-box">
-    <h1> This is Page after login</h1>
-	
-	
-	
-  </div>
+						function update(val = this.value) {
+							// Join new data
+							const path = svg.selectAll("path")
+								.data(pie(data[val]));
 
-  <footer>
-    <div>Footer @Slaw</div>
-  </footer>
+							// Update existing arcs
+							path.transition().duration(200).attrTween("d", arcTween);
+
+							// Enter new arcs
+							path.enter().append("path")
+								.attr("fill", (d, i) => color(i))
+								.attr("d", arc)
+								.attr("stroke", "white")
+								.attr("stroke-width", "6px")
+								.each(function(d) { this._current = d; });
+						}
+
+						update("apples");
+					});
+				</script>
+			</div>
+		</div>
+	  </div>
+
+	  <footer>
+		<div>Footer @Slaw</div>
+	  </footer>
 
 </div>
   
 
 
+
 </body>
+<script>
+	transition_container();
+</script>
 
 
 </html>
