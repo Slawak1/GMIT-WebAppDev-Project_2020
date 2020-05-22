@@ -38,64 +38,28 @@
 		<div id="cont2" >
 			<h1> Data</h1>
 			<div id = "chart1"> 
+			<p> Some information here</p>
 				<script>
-					var width = 540;
-					var height = 540;
-					var radius = Math.min(width, height) / 2;
 					
-					let svgChart = d3.select("#chart1").append("svg")
-						.attr("width", width)
-						.attr("height", height)
-					.append("group")
-						.attr("transform", `translate(${width / 2}, ${height / 2})`);
-						
-					var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb", "#e78ac3","#a6d854","#ffd92f"]);
-					
-					var chartPie = d3.pie()
-						.value(d=>d.count)
-						.sort(null);
-						
-					var arc = d3.arc()
-						.innerRadius(radius/2)
-						.outerRadius(radius)
-					
-					function type(d) {
-						d.apples = Number(d.apples);
-						d.oranges = Number(d.oranges);
-						return d;
-					}
-					
-					function arcTween(a) {
-						const i = d3.interpolate(this._current, a);
-						this._current = i(1);
-						return (t) => arc(i(t));
-					}
-					
-					d3.json("data.json", type).then(data => {  
-						d3.selectAll("input")
-							.on("change", update);
-
-						function update(val = this.value) {
-							// Join new data
-							const path = svg.selectAll("path")
-								.data(pie(data[val]));
-
-							// Update existing arcs
-							path.transition().duration(200).attrTween("d", arcTween);
-
-							// Enter new arcs
-							path.enter().append("path")
-								.attr("fill", (d, i) => color(i))
-								.attr("d", arc)
-								.attr("stroke", "white")
-								.attr("stroke-width", "6px")
-								.each(function(d) { this._current = d; });
-						}
-
-						update("apples");
-					});
+						pieChart();
 				</script>
 			</div>
+			<div id = "chart1"> 
+				<p> Data Entry</p>
+				 <form>
+					<label for="data1"><b>Value1</b></label><input type="text" id="firstname" name="firstname">
+					<label for="data2"><b>Value2</b></label><input type="text" id="firstname" name="firstname">
+					<label for="data3"><b>Value3</b></label><input type="text" id="firstname" name="firstname">
+					<label for="data4"><b>Value4</b></label><input type="text" id="firstname" name="firstname">
+					<label for="data5"><b>Value5</b></label><input type="text" id="firstname" name="firstname">
+					<label for="data6"><b>Value6</b></label><input type="text" id="firstname" name="firstname">
+					
+					<button id="button" type="submit" onclick="login(this.form)"  class="registerbtn">Load Data</button>
+				</form>
+			</div>
+
+			
+			
 		</div>
 	  </div>
 

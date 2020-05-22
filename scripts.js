@@ -1,9 +1,68 @@
 
+
+// Code adapted from https://www.youtube.com/watch?v=P8KNr0pDqio tutorial. 
+function pieChart() {
+	var width = 600, height = 500;
+	var colors = d3.scaleOrdinal(d3.schemeSet2 );
+	var svg = d3.select("#chart1").append("svg")
+		.attr("width",width)
+		.attr("height",height)
+		
+	var details = [{grade:"A+", number:8},
+					{grade:"A", number:21},
+					{grade:"B", number:15},
+					{grade:"C", number:29},
+					{grade:"D", number:11},
+					{grade:"F", number:6}];
+					
+	var data = d3.pie()
+		.sort(null)
+		.value(function(d){return d.number;})(details);
+		console.log(data)
+	
+	var segments = d3.arc()
+		
+		.innerRadius(40)
+		.outerRadius(200)
+		.padAngle(.05)
+		.padRadius(50);
+		
+	var sections = svg.append("g")
+		
+		.attr("transform", "translate(250,250)")
+		.selectAll("path")
+		.data(data);
+	
+	sections.enter().append("path")
+		.transition()
+		.delay(function(d,i) {return i * 400; })
+		.duration(200)
+		.attr("d",segments)
+		.attr("fill", function(d){return colors(d.data.number);
+		});
+		
+		
+	var content = d3.select("g")
+		.selectAll("text")
+		.data(data);
+		
+	content.enter().append("text")
+		.each(function(d){
+			var center = segments.centroid(d);
+			d3.select(this)
+				.transition()
+				.delay(2500)
+				.duration(500)
+				.attr("x",center[0])
+				.attr("y",center[1])
+				.text(d.data.number);
+				
+		})
+	
+	
+}
+
 // Method to animate transition of DIV - change opacity from 0 to 100 
-
-
-
-
 function transition_container() {
 	d3.select("#cont2")
     .transition()
