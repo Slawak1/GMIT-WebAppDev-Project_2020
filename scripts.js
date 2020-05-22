@@ -1,24 +1,56 @@
 
 
+
+
+
+function pie_starter(form){
+	var val1 = form.Value1.value
+	var val2 = form.Value2.value
+	var val3 = form.Value3.value
+	var val4 = form.Value4.value
+	var val5 = form.Value5.value
+	var val6 = form.Value6.value
+	
+	pieChart(val1, val2, val3, val4, val5, val6)
+}
+
+
 // Code adapted from https://www.youtube.com/watch?v=P8KNr0pDqio tutorial. 
-function pieChart() {
+function pieChart(val1, val2, val3, val4, val5, val6) {
+	
+	// remove already existing svg from div
+	d3.select("#chart1").select("svg").remove();
+
+	
+	// read values from form
+
+	
+	
+	// Read data from array
+	var details = [{grade:"A+", number:val1},
+					{grade:"A", number:val2},
+					{grade:"B", number:val3},
+					{grade:"C", number:val4},
+					{grade:"D", number:val5},
+					{grade:"F", number:val6}];
+					
+					
+	// set pie chart width and height
 	var width = 600, height = 500;
+	
+	// set color schema
 	var colors = d3.scaleOrdinal(d3.schemeSet2 );
+	
+	// append svg to html div with attributes 
 	var svg = d3.select("#chart1").append("svg")
 		.attr("width",width)
 		.attr("height",height)
 		
-	var details = [{grade:"A+", number:8},
-					{grade:"A", number:21},
-					{grade:"B", number:15},
-					{grade:"C", number:29},
-					{grade:"D", number:11},
-					{grade:"F", number:6}];
 					
 	var data = d3.pie()
 		.sort(null)
 		.value(function(d){return d.number;})(details);
-		console.log(data)
+		
 	
 	var segments = d3.arc()
 		
@@ -27,18 +59,46 @@ function pieChart() {
 		.padAngle(.05)
 		.padRadius(50);
 		
-	var sections = svg.append("g")
+	
+	// Code to add shadow to pie chart.
+	// Code taken from https://stackoverflow.com/a/17373466		
+	var defs = svg.append("defs");
+
+    var filter = defs.append("filter")
+        .attr("id", "dropshadow")
+
+    filter.append("feGaussianBlur")
+        .attr("in", "SourceAlpha")
+        .attr("stdDeviation", 5)
+        .attr("result", "blur");
+    filter.append("feOffset")
+        .attr("in", "blur")
+        .attr("dx", 4)
+        .attr("dy", 5)
+        .attr("result", "offsetBlur");
+
+    var feMerge = filter.append("feMerge");
+
+    feMerge.append("feMergeNode")
+        .attr("in", "offsetBlur")
+    feMerge.append("feMergeNode")
+        .attr("in", "SourceGraphic");	
 		
+		
+	  
+	var sections = svg.append("g")
 		.attr("transform", "translate(250,250)")
 		.selectAll("path")
 		.data(data);
 	
 	sections.enter().append("path")
 		.transition()
-		.delay(function(d,i) {return i * 400; })
-		.duration(200)
+		.delay(function(d,i) {return 1000 + i * 400; })
+		.duration(800)
+		.attr("filter", "url(#dropshadow)") // add filter 
 		.attr("d",segments)
-		.attr("fill", function(d){return colors(d.data.number);
+		.attr("fill", function(d){return colors(d.data.number)
+		;
 		});
 		
 		
@@ -51,7 +111,7 @@ function pieChart() {
 			var center = segments.centroid(d);
 			d3.select(this)
 				.transition()
-				.delay(2500)
+				.delay(3500)
 				.duration(500)
 				.attr("x",center[0])
 				.attr("y",center[1])
@@ -63,30 +123,11 @@ function pieChart() {
 }
 
 // Method to animate transition of DIV - change opacity from 0 to 100 
-function transition_container() {
-	d3.select("#cont2")
+function transition_container(val) {
+	d3.select(val)
     .transition()
     .duration(3000)
     .style("opacity", "100")
-}
-
-function data_from_array(arr) {
-	
-	let svgCount = d3.select("#chart1").append("SVG")
-		.attr("width",500)
-		.attr("height",500);
-		
-	let myRect = svgCount.selectAll("rect")
-		.data(arr);
-		
-	myRect.enter()
-		.append("rect")
-		.attr("x",function(d,i){return 50+(i*10);})
-		.attr("y", 50)
-		.attr("width",100)
-		.attr("height",function(d){return d;})
-		attr("fill","green")
-	
 }
 
 

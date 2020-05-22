@@ -15,6 +15,7 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+
 .container {
 	height:950px;
 }
@@ -43,16 +44,27 @@ header {
 /* Main */
 
 #left-box {
+	
 	margin:5px;
+	height:100%;
 	width:20%; 
 	float:left; 
 	background-color: rgba(72, 201, 176, 0.6);
 	box-shadow: 5px 10px 15px; 
 	height: 100%;
+	text-align:center;
 
 
 }
 
+.chart_icon{
+	margin:40px;
+	
+}
+
+.chart_icon a:hover{
+	box-shadow: 5px 10px 15px;
+}
 
 
 #right-box {
@@ -76,20 +88,27 @@ header {
 	opacity:0;
 }
 
+
+#wrapper {width: 100%;}
+
 #chart1 {
-	width: 600px;
-    float:left; /* add this */
-    border: 1px solid red;	
+	width: 50%;
+    float:left; /* add this */ 
 }
 
 #data1 {
-	border: 1px solid green;
-    float: left; /* add this */
+	width: 50%;
+	float:right;
+	text-align: left;   
+}
+
+#pie-form {
+	width:150px;
+	margin: 0 auto;
 }
 
 
-
-/* Footer */
+/*#########################################################*/
 
 footer {
 	width:100%; 

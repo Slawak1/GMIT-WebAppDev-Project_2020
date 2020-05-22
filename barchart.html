@@ -14,7 +14,7 @@
 <body>
 
 <div class="container">
-<!-- Header -->	
+<!------------------ Header ------------------------------------------->	
 	  <header>
 		<!-- Menu -->
 			<div class="menu">
@@ -47,32 +47,16 @@
 <!--------------------- RIGHT BOX ---------------------------------------->
 	  <div id="right-box">
 		<div id="cont2" >
-			<h1> Data Read From Array</h1>
-			<p>To generate Pie Chart enter values into Data Entry form and press Load Data Button. <br>
-				It Generates the Pie Chart.
-			</p>
+			<h1> Data Readed From CSV</h1>
 			<div id=“wrapper”>
-				<div id = "chart1" > 
-				<p> </p>
+				<div id = "chart1"> 
+				
 					
 				</div>
+				
+				
 				<div id = "data1"> 
-					<div id="pie-form">
-						<p> Data Entry</p>
-						 <form>
-							<label ><b>Value 1</b></label><input type="text" id="Value1" name="firstname" value = 6>
-							<label ><b>Value 2</b></label><input type="text" id="Value2" name="firstname" value = 18>
-							<label ><b>Value 3</b></label><input type="text" id="Value3" name="firstname" value = 10>
-							<label ><b>Value 4</b></label><input type="text" id="Value4" name="firstname" value = 25>
-							<label ><b>Value 5</b></label><input type="text" id="Value5" name="firstname" value = 37>
-							<label ><b>Value 6</b></label><input type="text" id="Value6" name="firstname" value = 20>
-							
-							<button id="button2" type="submit" onclick="pie_starter(this.form);return false"  class="registerbtn">Load Data</button>
-						</form>
-						<script>
-							pieChart(6,18,10,25,37,20);
-						</script>
-					</div>
+					
 				</div>
 				
 			</div>
@@ -80,7 +64,7 @@
 			
 		</div>
 	  </div>
-
+<!--------------------- FOOTER  ---------------------------------------->
 	  <footer>
 		<div>Footer @Slaw</div>
 	  </footer>
@@ -92,10 +76,7 @@
 
 </body>
 <script>
-	
-	transition_container("#cont2");
-	
-	
+	transition_container();
 </script>
 
 
